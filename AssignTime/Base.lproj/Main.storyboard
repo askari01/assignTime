@@ -26,8 +26,8 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="wbr-Fk-8GL"/>
-                                    <tabBarItem systemItem="more" id="ZdC-vy-2eE"/>
+                                    <tabBarItem title="Time Interval" id="wbr-Fk-8GL"/>
+                                    <tabBarItem title="See Pictures" id="ZdC-vy-2eE"/>
                                 </items>
                             </tabBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujS-CT-8EZ">
