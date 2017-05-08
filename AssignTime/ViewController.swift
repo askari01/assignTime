@@ -14,6 +14,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var timePicker: UIPickerView!
     @IBOutlet weak var timePicked: UILabel!
+    @IBOutlet weak var notifSwitch: UISwitch!
+    
     
     let picker = UIImagePickerController()
     var pickerData: [String] = [String]()
@@ -36,6 +38,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         // input to timePicker
         pickerData = ["1 Hour", "2 Hours", "4 Hours", "8 Hours", "12 Hours", "24 Hours"]
         
+        // switch
+        notifSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControlEvents.valueChanged)
+        
+        // Directory
         let fm = FileManager.default
         let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
         
@@ -50,6 +56,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Switch
+    func switchIsChanged(mySwitch: UISwitch) {
+        if mySwitch.isOn {
+            print("UISwitch is ON")
+            timePicker.isHidden = false
+        } else {
+            print("UISwitch is OFF")
+            timePicker.isHidden = true
+        }
     }
 
     // Picker View
@@ -72,20 +89,49 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     // Catpure the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print (row)
+        var time: Int = 0
+        
+        switch row {
+        case 0:
+            time = 60
+            break
+        case 1:
+            time = 60 * 2
+            break
+        case 2:
+            time = 60 * 4
+            break
+        case 3:
+            time = 60 * 8
+            break
+        case 4:
+            time = 60 * 12
+            break
+        case 5:
+            time = 60 * 24
+            break
+        default:
+            time = 60
+            break
+        }
         
         // Create Notification Content
         let notificationContent = UNMutableNotificationContent()
         
+        // Clear Previous Notifications
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         // Configure Notification Content
         notificationContent.title = "Assign Time"
-        //        notificationContent.subtitle = "Local Notifications"
+       
+//      notificationContent.subtitle = "Local Notifications"
         notificationContent.body = "Do you want to take a picture ?"
         
         // Add Trigger
-        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(row), repeats: false)
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(time), repeats: true)
         
         // Create Notification Request
-        let notificationRequest = UNNotificationRequest(identifier: "calllight", content: notificationContent, trigger: notificationTrigger)
+        let notificationRequest = UNNotificationRequest(identifier: "assignTime", content: notificationContent, trigger: notificationTrigger)
         
         // Add Request to User Notification Center
         UNUserNotificationCenter.current().add(notificationRequest) { (error) in
@@ -117,7 +163,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     }
     
     // picker handler
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [AnyHashable: Any]) {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [AnyHashable: Any]) {
         let chosenImage: UIImage? = info[UIImagePickerControllerEditedImage] as! UIImage?
         UIImageWriteToSavedPhotosAlbum(chosenImage!, self, nil, nil)
         
