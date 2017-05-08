@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,41 +22,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DEO-Me-AOu">
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEO-Me-AOu">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <tabBarItem title="Time Interval" id="wbr-Fk-8GL"/>
                                     <tabBarItem title="See Pictures" id="ZdC-vy-2eE"/>
                                 </items>
                             </tabBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujS-CT-8EZ">
-                                <rect key="frame" x="154" y="166" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Camera"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Je-y7-zq1">
+                                <rect key="frame" x="16" y="57" width="343" height="111"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="Pzs-rL-jhi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Time Interval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVa-mb-0zt">
+                                <rect key="frame" x="16" y="176" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7k-oc-rc1">
+                                <rect key="frame" x="0.0" y="205" width="375" height="216"/>
+                            </pickerView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRo-jU-e5k">
+                                <rect key="frame" x="310" y="429" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BN-rI-0pa">
+                                <rect key="frame" x="16" y="434" width="166" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="K4j-op-ldQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Pic Alarm will be executed every" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKX-id-jQG">
+                                <rect key="frame" x="16" y="28" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujS-CT-8EZ">
+                                <rect key="frame" x="91" y="463" width="193" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="fQA-vu-hHo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Take a Pic Now"/>
                                 <connections>
                                     <action selector="cameraButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uC7-9z-C5b"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Shn-oM-K11">
-                                <rect key="frame" x="0.0" y="225" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="515528855.73933297">
-                                    <!--2017-05-03 18:27:35 +0000-->
-                                </date>
-                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1Je-y7-zq1" firstAttribute="leading" secondItem="YVa-mb-0zt" secondAttribute="leading" id="2GB-M6-D73"/>
+                            <constraint firstItem="EKX-id-jQG" firstAttribute="leading" secondItem="1Je-y7-zq1" secondAttribute="leading" id="45R-Nq-L0p"/>
+                            <constraint firstItem="ujS-CT-8EZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="75" id="5sW-aD-rK6"/>
+                            <constraint firstItem="1Je-y7-zq1" firstAttribute="top" secondItem="EKX-id-jQG" secondAttribute="bottom" constant="8" symbolic="YES" id="6Mx-51-xUi"/>
+                            <constraint firstItem="YVa-mb-0zt" firstAttribute="trailing" secondItem="nRo-jU-e5k" secondAttribute="trailing" id="6XF-Hz-p9s"/>
+                            <constraint firstItem="EKX-id-jQG" firstAttribute="trailing" secondItem="1Je-y7-zq1" secondAttribute="trailing" id="8Si-E1-Eur"/>
+                            <constraint firstItem="YVa-mb-0zt" firstAttribute="leading" secondItem="6BN-rI-0pa" secondAttribute="leading" id="EMz-yE-a1Y"/>
+                            <constraint firstItem="YVa-mb-0zt" firstAttribute="top" secondItem="1Je-y7-zq1" secondAttribute="bottom" constant="8" symbolic="YES" id="FZg-WZ-Kty"/>
+                            <constraint firstAttribute="trailing" secondItem="h7k-oc-rc1" secondAttribute="trailing" id="KAR-bL-Tml"/>
+                            <constraint firstItem="DEO-Me-AOu" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="PHG-Io-yIy"/>
+                            <constraint firstItem="nRo-jU-e5k" firstAttribute="top" secondItem="h7k-oc-rc1" secondAttribute="bottom" constant="8" symbolic="YES" id="SI1-cg-754"/>
+                            <constraint firstItem="h7k-oc-rc1" firstAttribute="top" secondItem="YVa-mb-0zt" secondAttribute="bottom" constant="8" symbolic="YES" id="Twq-tF-4Wj"/>
+                            <constraint firstItem="h7k-oc-rc1" firstAttribute="trailing" secondItem="DEO-Me-AOu" secondAttribute="trailing" id="VRM-qm-5QB"/>
+                            <constraint firstItem="1Je-y7-zq1" firstAttribute="trailing" secondItem="YVa-mb-0zt" secondAttribute="trailing" id="d3c-UN-VbO"/>
+                            <constraint firstItem="6BN-rI-0pa" firstAttribute="centerY" secondItem="nRo-jU-e5k" secondAttribute="centerY" id="erD-ST-4ja"/>
+                            <constraint firstItem="ujS-CT-8EZ" firstAttribute="centerX" secondItem="DEO-Me-AOu" secondAttribute="centerX" id="fw7-l9-r4Y"/>
+                            <constraint firstItem="YVa-mb-0zt" firstAttribute="centerX" secondItem="h7k-oc-rc1" secondAttribute="centerX" id="g3m-p5-La6"/>
+                            <constraint firstItem="EKX-id-jQG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pj9-2i-00J"/>
+                            <constraint firstItem="EKX-id-jQG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="px1-Eg-cmX"/>
+                            <constraint firstItem="h7k-oc-rc1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="r7h-6P-unJ"/>
+                            <constraint firstItem="h7k-oc-rc1" firstAttribute="leading" secondItem="DEO-Me-AOu" secondAttribute="leading" id="t4K-Hx-pWH"/>
+                            <constraint firstItem="ujS-CT-8EZ" firstAttribute="top" secondItem="6BN-rI-0pa" secondAttribute="bottom" constant="8" symbolic="YES" id="ytT-OW-QDi"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraButtonOutlet" destination="ujS-CT-8EZ" id="paL-h7-7hR"/>
-                        <outlet property="datePickerOutlet" destination="Shn-oM-K11" id="jF5-p5-xpz"/>
+                        <outlet property="timePicked" destination="1Je-y7-zq1" id="cD4-MP-MSx"/>
+                        <outlet property="timePicker" destination="h7k-oc-rc1" id="7dm-eb-ine"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="136.28185907046478"/>
+            <point key="canvasLocation" x="136.23188405797103" y="136.14130434782609"/>
         </scene>
     </scenes>
 </document>
