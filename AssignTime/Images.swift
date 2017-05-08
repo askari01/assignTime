@@ -14,6 +14,13 @@ class Images: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let fileManager = FileManager.default
+        let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("apple.jpg")
+        if fileManager.fileExists(atPath: imagePAth){
+            print("Image Path: ", imagePAth)
+        }else{
+            print("No Image")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +28,11 @@ class Images: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func getDirectoryPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
 
     /*
     // MARK: - Navigation
