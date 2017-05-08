@@ -41,7 +41,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         // switch
         notifSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControlEvents.valueChanged)
         
-        // Directory
+        // Directory Creation & Check for Image storage
         let fm = FileManager.default
         let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
         
@@ -167,9 +167,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         let chosenImage: UIImage? = info[UIImagePickerControllerEditedImage] as! UIImage?
         UIImageWriteToSavedPhotosAlbum(chosenImage!, self, nil, nil)
         
+        // Saving Image to Directory
         let fileManager = FileManager.default
         
         let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        print ("TIMER: ",Timer.init())
         let image = UIImage(named: "apple.jpg")
         print(paths)
         let imageData = UIImageJPEGRepresentation(chosenImage!, 0.5)
