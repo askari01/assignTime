@@ -24,7 +24,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     @IBAction func cameraButtonAction(_ sender: Any) {
         print("Inside Camera Button Call")
         takeImage()
-        
     }
     
     override func viewDidLoad() {
@@ -34,6 +33,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         // time intervals
         timePicker.delegate = self
         timePicker.dataSource = self
+        
+        // image
+        picker.delegate = self
         
         // input to timePicker
         pickerData = ["1 Hour", "2 Hours", "4 Hours", "8 Hours", "12 Hours", "24 Hours"]
@@ -65,6 +67,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
             timePicker.isHidden = false
         } else {
             print("UISwitch is OFF")
+            
+            // Clear Previous Notifications
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            
             timePicker.isHidden = true
         }
     }
@@ -148,7 +154,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     func pickImage() {
         print("hello pick Image")
         picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
+        picker.sourceType = UIImagePickerControllerSourceType.camera
+        picker.cameraCaptureMode = .photo
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }
@@ -156,14 +163,38 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     // camera
     func takeImage() {
         print("hello take Image")
-        picker.allowsEditing = true
-        picker.sourceType = .camera
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.allowsEditing = true
+            picker.sourceType = .camera
+            picker.cameraCaptureMode = .photo
+//            picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(picker, animated: true, completion: nil)
+        } else {
+            print ("no camera device found")
+            noCamera()
+        }
+    }
+    
+    // No Camera
+    func noCamera(){
+        let alertVC = UIAlertController(
+            title: "No Camera",
+            message: "Sorry, this device has no camera",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style:.default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        present(
+            alertVC,
+            animated: true,
+            completion: nil)
     }
     
     // picker handler
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [AnyHashable: Any]) {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage: UIImage? = info[UIImagePickerControllerEditedImage] as! UIImage?
         UIImageWriteToSavedPhotosAlbum(chosenImage!, self, nil, nil)
         
@@ -171,20 +202,34 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         let fileManager = FileManager.default
         
         let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
-        print ("TIMER: ",Timer.init())
+        print ("TIMER: ",Date.init())
         let image = UIImage(named: "apple.jpg")
         print(paths)
         let imageData = UIImageJPEGRepresentation(chosenImage!, 0.5)
         fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
         
-        picker.dismiss(animated: true, completion: { _ in })
+        picker.dismiss(animated: true, completion: nil)
     }
     
     // picker did cancel
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: { _ in })
+        picker.dismiss(animated: true, completion: nil)
     }
-
+    
+    //MARK: - Add image to Library
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
     // error occured
     
 //    func saveImage (image: UIImage, path: String ) -> Bool{
