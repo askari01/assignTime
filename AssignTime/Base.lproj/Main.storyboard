@@ -144,14 +144,14 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="30" rowHeight="253" id="jVr-Tj-go5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="30" reuseIdentifier="ImageCell" rowHeight="253" id="jVr-Tj-go5">
                                         <rect key="frame" x="0.0" y="28" width="375" height="253"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jVr-Tj-go5" id="RK0-yk-jwI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="252.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yb7-BD-Lnj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assigntime" translatesAutoresizingMaskIntoConstraints="NO" id="Yb7-BD-Lnj">
                                                     <rect key="frame" x="0.0" y="8" width="376" height="245"/>
                                                 </imageView>
                                             </subviews>
@@ -178,6 +178,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Images" image="albums" id="iNj-Zg-FU7"/>
+                    <connections>
+                        <outlet property="table" destination="sM2-h0-e74" id="eOD-zh-v1M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNe-BJ-Q0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -187,5 +190,6 @@
     <resources>
         <image name="alarm-clock" width="21" height="21"/>
         <image name="albums" width="21" height="21"/>
+        <image name="assigntime" width="1000" height="1000"/>
     </resources>
 </document>

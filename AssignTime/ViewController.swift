@@ -198,15 +198,46 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         let chosenImage: UIImage? = info[UIImagePickerControllerEditedImage] as! UIImage?
         UIImageWriteToSavedPhotosAlbum(chosenImage!, self, nil, nil)
         
-        // Saving Image to Directory
+        // Saving Image to Photos
         let fileManager = FileManager.default
         
         let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
         print ("TIMER: ",Date.init())
+        print ("chosenImage", chosenImage)
         let image = UIImage(named: "apple.jpg")
         print(paths)
         let imageData = UIImageJPEGRepresentation(chosenImage!, 0.5)
+        
+        // Saving Image to CustomDir
+        var documentsUrl: URL {
+            return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("customDir")
+        }
+        let fileName = String(describing: Date.init())
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        if let imageData = UIImageJPEGRepresentation(chosenImage!, 1.0) {
+            try? imageData.write(to: fileURL, options: .atomic)
+//            return fileName // ----> Save fileName
+        } else {
+            print("Error saving image")
+        }
+        
         fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
+        
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            print (imageData)
+        } catch {
+            print("Error loading image : \(error)")
+        }
+        
+        if fileManager.fileExists(atPath: paths){
+            print("Image Path: ", paths)
+            let dirContents = try? fileManager.contentsOfDirectory(atPath: paths)
+            let count = dirContents?.count
+            print (count)
+        }else{
+            print("No Image")
+        }
         
         picker.dismiss(animated: true, completion: nil)
     }
