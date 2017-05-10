@@ -85,6 +85,10 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRo-jU-e5k">
                                 <rect key="frame" x="310" y="429" width="51" height="31"/>
                             </switch>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-ie-j51">
+                                <rect key="frame" x="102" y="255" width="170" height="117"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -108,10 +112,16 @@
                             <constraint firstItem="EKX-id-jQG" firstAttribute="leading" secondItem="1Je-y7-zq1" secondAttribute="leading" id="xJj-hm-tVL"/>
                             <constraint firstItem="EKX-id-jQG" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="xWt-kI-TV3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Bya-ie-j51"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Time Interval" image="alarm-clock" id="kh8-qE-a23"/>
                     <connections>
                         <outlet property="cameraButtonOutlet" destination="ujS-CT-8EZ" id="paL-h7-7hR"/>
+                        <outlet property="imageView" destination="Bya-ie-j51" id="aap-60-RaT"/>
                         <outlet property="notifSwitch" destination="nRo-jU-e5k" id="Uaj-ZM-VkH"/>
                         <outlet property="timePicked" destination="1Je-y7-zq1" id="cD4-MP-MSx"/>
                         <outlet property="timePicker" destination="h7k-oc-rc1" id="7dm-eb-ine"/>
@@ -119,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73.913043478260875" y="-289.4021739130435"/>
+            <point key="canvasLocation" x="72.799999999999997" y="-290.10494752623691"/>
         </scene>
         <!--Images-->
         <scene sceneID="Piv-xb-fAZ">

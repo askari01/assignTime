@@ -19,7 +19,6 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let fileManager = FileManager.default
         let imagePAth = (self.getDirectoryPath() as NSString)
         if fileManager.fileExists(atPath: imagePAth as String){
-            print("Image Path: ", imagePAth)
             let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String)
             let count = dirContents?.count
             print (count)
@@ -34,7 +33,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 2
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,38 +42,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.table.dequeueReusableCell(withIdentifier: "ImageCell")
-        
-        let fileManager = FileManager.default
-        let imagePAth = (self.getDirectoryPath() as NSString)
-        if fileManager.fileExists(atPath: imagePAth as String){
-            if fileManager.fileExists(atPath: imagePAth as String){
-                print(imagePAth)
-                do{
-                    let titles = try FileManager.default.contentsOfDirectory(atPath: imagePAth as String)
-                    for image in titles{
-//                        print (image)
-//                        try fileManager.removeItem(atPath: imagePAth as String)
-                        if (image.range(of: ".jpg")  != nil) {
-                            print (image)
-//                            let data = try? FileManager.default.contents(atPath:imagePAth.appending("customPic.jpg"))
-//                        let image1 = UIImage(data: data as! Data)
-//                            print (image1!)
-//                            cell?.imageView?.image = UIImage(contentsOfFile: imagePAth as String)
-                        }
-                    }
-                }catch{
-                    print("Error")
-                }
-                
-            }else{
-                print("No Image")
-            }
-            
-        }else{
-            print("No Image")
-        }
-        
-//        cell?.imageView =
+        cell?.imageView?.image = getImage()
         return cell!
     }
 
@@ -83,10 +51,25 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
+    // Get Directory Path
+    
     func getDirectoryPath() -> String {
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true))
-        let dirPath = paths[0]
-        return dirPath
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    // Get Image
+    
+    func getImage() -> UIImage {
+        let fileManager = FileManager.default
+        let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("apple.jpg")
+        if fileManager.fileExists(atPath: imagePAth){
+            return UIImage(contentsOfFile: imagePAth)!
+        }else{
+            print("No Image")
+        }
+        return UIImage(named: "assigntime")!
     }
 
     /*
