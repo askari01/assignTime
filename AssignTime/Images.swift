@@ -16,28 +16,32 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let fileManager = FileManager.default
-        let imagePAth = (self.getDirectoryPath() as NSString)
-        if fileManager.fileExists(atPath: imagePAth as String){
-            let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String)
-            let count = dirContents?.count
-            print (count)
-            
-        }else{
-            print("No Image")
-        }
-        
         table.delegate = self
         table.dataSource = self
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        // Get Count
+        let fileManager = FileManager.default
+        let imagePAth = (self.getDirectoryPath() as NSString)
+        if fileManager.fileExists(atPath: imagePAth as String){
+            let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String)
+            let count = dirContents?.count
+            return count!
+            
+        }else{
+            print("No Image")
+        }
+        return 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 290
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +49,19 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell?.imageView?.image = getImage()
         return cell!
     }
-
+    
+    // Edit Row
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // Delete the cell
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            self.table.reloadData()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
