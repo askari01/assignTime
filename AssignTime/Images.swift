@@ -12,6 +12,8 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +21,20 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         table.delegate = self
         table.dataSource = self
         
+        // for table pull down to refresh
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
+        table.addSubview(refreshControl)
     }
+    
+    func refresh(sender:AnyObject) {
+        //  your code to refresh tableView
+        table.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Get Count
@@ -60,6 +75,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Delete the cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
+            deleteDirectory()
             self.table.reloadData()
         }
     }
@@ -90,6 +106,17 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return UIImage(named: "assigntime")!
     }
 
+    func deleteDirectory(){
+        let fileManager = FileManager.default
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        if fileManager.fileExists(atPath: paths){
+            try! fileManager.removeItem(atPath: paths)
+            print ("deleted")
+        }else{
+            print("Something went wrong.")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
