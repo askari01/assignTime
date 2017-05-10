@@ -41,7 +41,9 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 290
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        return screenWidth - 25
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
