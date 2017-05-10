@@ -34,7 +34,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 6
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,7 +48,24 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let imagePAth = (self.getDirectoryPath() as NSString)
         if fileManager.fileExists(atPath: imagePAth as String){
             if fileManager.fileExists(atPath: imagePAth as String){
-                cell?.imageView?.image = UIImage(contentsOfFile: imagePAth as String)
+                print(imagePAth)
+                do{
+                    let titles = try FileManager.default.contentsOfDirectory(atPath: imagePAth as String)
+                    for image in titles{
+//                        print (image)
+//                        try fileManager.removeItem(atPath: imagePAth as String)
+                        if (image.range(of: ".jpg")  != nil) {
+                            print (image)
+//                            let data = try? FileManager.default.contents(atPath:imagePAth.appending("customPic.jpg"))
+//                        let image1 = UIImage(data: data as! Data)
+//                            print (image1!)
+//                            cell?.imageView?.image = UIImage(contentsOfFile: imagePAth as String)
+                        }
+                    }
+                }catch{
+                    print("Error")
+                }
+                
             }else{
                 print("No Image")
             }
@@ -67,8 +84,9 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func getDirectoryPath() -> String {
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
-        return paths
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true))
+        let dirPath = paths[0]
+        return dirPath
     }
 
     /*

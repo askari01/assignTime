@@ -51,6 +51,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
             try! fm.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
         } else {
             print ("Already created directory")
+//            try! fm.removeItem(atPath: path)
         }
         
     }
@@ -65,12 +66,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         if mySwitch.isOn {
             print("UISwitch is ON")
             timePicker.isHidden = false
+            timePicked.text = "1:00"
         } else {
             print("UISwitch is OFF")
             
             // Clear Previous Notifications
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            
+            timePicked.text = "0:00"
             timePicker.isHidden = true
         }
     }
@@ -99,25 +101,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         
         switch row {
         case 0:
-            time = 60
+            time = 60 * 60
+            timePicked.text = "1:00"
             break
         case 1:
-            time = 60 * 2
+            time = 60 * 60 * 2
+            timePicked.text = "2:00"
             break
         case 2:
-            time = 60 * 4
+            time = 60 * 60 * 4
+            timePicked.text = "4:00"
             break
         case 3:
-            time = 60 * 8
+            time = 60 * 60 * 8
+            timePicked.text = "8:00"
             break
         case 4:
-            time = 60 * 12
+            time = 60 * 60 * 12
+            timePicked.text = "12:00"
             break
         case 5:
-            time = 60 * 24
+            time = 60 * 60 * 24
+            timePicked.text = "24:00"
             break
         default:
-            time = 60
+            time = 60 * 60
+            timePicked.text = "1:00"
             break
         }
         
@@ -201,44 +210,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         // Saving Image to Photos
         let fileManager = FileManager.default
         
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customPic.jpg")
         print ("TIMER: ",Date.init())
-        print ("chosenImage", chosenImage)
-        let image = UIImage(named: "apple.jpg")
         print(paths)
         let imageData = UIImageJPEGRepresentation(chosenImage!, 0.5)
         
-        // Saving Image to CustomDir
-        var documentsUrl: URL {
-            return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("customDir")
-        }
-        let fileName = String(describing: Date.init())
-        let fileURL = documentsUrl.appendingPathComponent(fileName)
-        if let imageData = UIImageJPEGRepresentation(chosenImage!, 1.0) {
-            try? imageData.write(to: fileURL, options: .atomic)
-//            return fileName // ----> Save fileName
-        } else {
-            print("Error saving image")
-        }
-        
         fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
-        
-        do {
-            let imageData = try Data(contentsOf: fileURL)
-            print (imageData)
-        } catch {
-            print("Error loading image : \(error)")
-        }
-        
-        if fileManager.fileExists(atPath: paths){
-            print("Image Path: ", paths)
-            let dirContents = try? fileManager.contentsOfDirectory(atPath: paths)
-            let count = dirContents?.count
-            print (count)
-        }else{
-            print("No Image")
-        }
-        
         picker.dismiss(animated: true, completion: nil)
     }
     
