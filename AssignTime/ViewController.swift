@@ -23,7 +23,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     
     
     @IBAction func cameraButtonAction(_ sender: Any) {
-        print("Inside Camera Button Call")
         takeImage()
     }
     
@@ -162,7 +161,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     
     // library
     func pickImage() {
-        print("hello pick Image")
+
         picker.allowsEditing = true
         picker.sourceType = UIImagePickerControllerSourceType.camera
         picker.cameraCaptureMode = .photo
@@ -172,7 +171,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     
     // camera
     func takeImage() {
-        print("hello take Image")
+
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             picker.allowsEditing = true
             picker.sourceType = .camera
@@ -238,7 +237,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         let fileManager = FileManager.default
         let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir/\(Date.init()).jpg")
 //        let image = UIImage(named: "apple.jpg")
-        print(paths)
         let imageData = UIImageJPEGRepresentation(image, 0.5)
         fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
     }
