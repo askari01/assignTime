@@ -236,7 +236,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     
     func saveImageDocumentDirectory(image: UIImage){
         let fileManager = FileManager.default
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("apple.jpg")
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir/\(Date.init()).jpg")
 //        let image = UIImage(named: "apple.jpg")
         print(paths)
         let imageData = UIImageJPEGRepresentation(image, 0.5)

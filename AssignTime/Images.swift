@@ -41,7 +41,9 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let fileManager = FileManager.default
         let imagePAth = (self.getDirectoryPath() as NSString)
         if fileManager.fileExists(atPath: imagePAth as String){
-            let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String)
+//            let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String).first?.appending("customDir")
+            let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+            let dirContents = try? fileManager.contentsOfDirectory(atPath: path as String)
             let count = dirContents?.count
             return count!
             
@@ -63,7 +65,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.table.dequeueReusableCell(withIdentifier: "ImageCell")
-        cell?.imageView?.image = getImage()
+        cell?.imageView?.image = getImage(index: indexPath.row)
         return cell!
     }
     
@@ -88,20 +90,25 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Get Directory Path
     
     func getDirectoryPath() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+
+//        let documentsDirectory = paths[0]
+        return paths
     }
     
     // Get Image
     
-    func getImage() -> UIImage {
+    func getImage(index: Int) -> UIImage {
         let fileManager = FileManager.default
-        let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("apple.jpg")
-        if fileManager.fileExists(atPath: imagePAth){
-            return UIImage(contentsOfFile: imagePAth)!
-        }else{
-            print("No Image")
+        let imagePAth = (self.getDirectoryPath() as NSString)
+        if fileManager.fileExists(atPath: imagePAth as String){
+            let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String)
+            let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent((dirContents?[index])!)
+            if fileManager.fileExists(atPath: imagePAth){
+                return UIImage(contentsOfFile: imagePAth)!
+            }else{
+                print("No Image")
+            }
         }
         return UIImage(named: "assigntime")!
     }
