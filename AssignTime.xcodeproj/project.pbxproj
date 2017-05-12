@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		367E79EF1EC5C0A7004409C1 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E79EE1EC5C0A7004409C1 /* Folder.swift */; };
 		36C607FB1EC0D86000ADC527 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C607FA1EC0D86000ADC527 /* Images.swift */; };
 		36E421061EBA54B3006F3171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E421051EBA54B3006F3171 /* AppDelegate.swift */; };
 		36E421081EBA54B3006F3171 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E421071EBA54B3006F3171 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		367E79EE1EC5C0A7004409C1 /* Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		36C607FA1EC0D86000ADC527 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		36E421021EBA54B3006F3171 /* AssignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36E421051EBA54B3006F3171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				36E421051EBA54B3006F3171 /* AppDelegate.swift */,
 				36E421071EBA54B3006F3171 /* ViewController.swift */,
 				36C607FA1EC0D86000ADC527 /* Images.swift */,
+				367E79EE1EC5C0A7004409C1 /* Folder.swift */,
 				36E421091EBA54B4006F3171 /* Main.storyboard */,
 				36E4210C1EBA54B4006F3171 /* Assets.xcassets */,
 				36E4210E1EBA54B4006F3171 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				36E421081EBA54B3006F3171 /* ViewController.swift in Sources */,
 				36C607FB1EC0D86000ADC527 /* Images.swift in Sources */,
 				36E421061EBA54B3006F3171 /* AppDelegate.swift in Sources */,
+				367E79EF1EC5C0A7004409C1 /* Folder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

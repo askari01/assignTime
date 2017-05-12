@@ -50,7 +50,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         
         if !fm.fileExists(atPath: path) {
             try! fm.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            defaults.set(path, forKey: "path")
         } else {
+            defaults.set(path, forKey: "path")
             print ("Already created directory")
 //            try! fm.removeItem(atPath: path)
         }
@@ -71,7 +73,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
             print("UISwitch is ON")
             timePicker.isHidden = false
             timePicked.text = "1:00"
-            defaults.set(true, forKey: "switch")
+            defaults.set(true, forKey: "switch") // for storage
+            createNotification(time: 60*60)
         } else {
             print("UISwitch is OFF")
             defaults.set(false, forKey: "switch")
@@ -148,6 +151,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
             break
         }
         
+        createNotification(time: time)
+    }
+    
+    // Create Notification
+    func createNotification(time: Int) {
         // Create Notification Content
         let notificationContent = UNMutableNotificationContent()
         
@@ -156,8 +164,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         
         // Configure Notification Content
         notificationContent.title = "Assign Time"
-       
-//      notificationContent.subtitle = "Local Notifications"
+        
+        //      notificationContent.subtitle = "Local Notifications"
         notificationContent.body = "Do you want to take a picture ?"
         
         // Add Trigger
@@ -172,7 +180,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
                 print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
             }
         }
-        
     }
     
     // MARK: Camera Call
