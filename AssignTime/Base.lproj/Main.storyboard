@@ -228,24 +228,66 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pictures Folder:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-Mp-H2m">
-                                <rect key="frame" x="16" y="87" width="182" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder Path" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-Mp-H2m">
+                                <rect key="frame" x="16" y="87" width="182" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHq-i4-yqz">
-                                <rect key="frame" x="16" y="116" width="343" height="200"/>
+                                <rect key="frame" x="16" y="122" width="343" height="194"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llo-JD-1sr">
+                                <rect key="frame" x="16" y="318.5" width="154.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Enter Folder Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maU-Qu-cqq">
+                                <rect key="frame" x="16" y="353" width="343" height="36"/>
+                                <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="0.19879066780821919" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="00L-Rq-XHA"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLC-Ft-QrB">
+                                <rect key="frame" x="16" y="397" width="343" height="30"/>
+                                <state key="normal" title="Create Folder &amp; Set as Default">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createFolder:" destination="zqG-Qd-OaH" eventType="touchUpInside" id="FeC-Hz-obc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-WY-AeM">
+                                <rect key="frame" x="16" y="435" width="102" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="1Gr-x0-tv5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Delete Folder">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteFolder:" destination="zqG-Qd-OaH" eventType="touchUpInside" id="8PA-Rv-39u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZHq-i4-yqz" firstAttribute="centerX" secondItem="h73-Jj-Isp" secondAttribute="centerX" id="3AL-sn-1S4"/>
+                            <constraint firstItem="maU-Qu-cqq" firstAttribute="leading" secondItem="ddD-yL-Lyk" secondAttribute="leadingMargin" id="3Mz-WK-FZu"/>
+                            <constraint firstItem="maU-Qu-cqq" firstAttribute="leading" secondItem="8PX-WY-AeM" secondAttribute="leading" id="5Su-nn-Lw9"/>
+                            <constraint firstItem="maU-Qu-cqq" firstAttribute="top" secondItem="llo-JD-1sr" secondAttribute="bottom" constant="8" symbolic="YES" id="BRD-9U-WZM"/>
                             <constraint firstItem="vAW-Mp-H2m" firstAttribute="top" secondItem="oVz-TM-LvO" secondAttribute="bottom" constant="8" symbolic="YES" id="Bfs-Qe-Ow0"/>
+                            <constraint firstItem="maU-Qu-cqq" firstAttribute="leading" secondItem="uLC-Ft-QrB" secondAttribute="leading" id="FNX-Vc-3Eu"/>
                             <constraint firstItem="h73-Jj-Isp" firstAttribute="leading" secondItem="ddD-yL-Lyk" secondAttribute="leading" id="HSl-hl-iCJ"/>
                             <constraint firstItem="oVz-TM-LvO" firstAttribute="top" secondItem="Dgv-th-Tlj" secondAttribute="bottom" constant="8" symbolic="YES" id="HcD-qa-lJO"/>
                             <constraint firstItem="oVz-TM-LvO" firstAttribute="leading" secondItem="vAW-Mp-H2m" secondAttribute="leading" id="J5V-NT-Lar"/>
@@ -254,12 +296,19 @@
                             <constraint firstItem="ZHq-i4-yqz" firstAttribute="top" secondItem="vAW-Mp-H2m" secondAttribute="bottom" constant="8" symbolic="YES" id="WSP-rv-YPQ"/>
                             <constraint firstItem="oVz-TM-LvO" firstAttribute="trailing" secondItem="vAW-Mp-H2m" secondAttribute="trailing" id="Xfc-JM-Pe9"/>
                             <constraint firstItem="vAW-Mp-H2m" firstAttribute="leading" secondItem="ZHq-i4-yqz" secondAttribute="leading" id="a0E-Uk-2V3"/>
+                            <constraint firstAttribute="bottom" secondItem="maU-Qu-cqq" secondAttribute="bottom" constant="278" id="bM7-B7-CLL"/>
+                            <constraint firstItem="8PX-WY-AeM" firstAttribute="top" secondItem="uLC-Ft-QrB" secondAttribute="bottom" constant="8" symbolic="YES" id="cOx-ar-6GZ"/>
+                            <constraint firstItem="uLC-Ft-QrB" firstAttribute="top" secondItem="maU-Qu-cqq" secondAttribute="bottom" constant="8" symbolic="YES" id="dZk-Ws-Bhj"/>
+                            <constraint firstItem="maU-Qu-cqq" firstAttribute="trailing" secondItem="ddD-yL-Lyk" secondAttribute="trailingMargin" id="eCx-DO-Ned"/>
                             <constraint firstItem="ZHq-i4-yqz" firstAttribute="leading" secondItem="ddD-yL-Lyk" secondAttribute="leadingMargin" id="ojV-Gk-vrF"/>
+                            <constraint firstItem="maU-Qu-cqq" firstAttribute="trailing" secondItem="uLC-Ft-QrB" secondAttribute="trailing" id="rOZ-m8-EaQ"/>
+                            <constraint firstItem="maU-Qu-cqq" firstAttribute="leading" secondItem="llo-JD-1sr" secondAttribute="leading" id="srp-hr-Dob"/>
                             <constraint firstItem="h73-Jj-Isp" firstAttribute="top" secondItem="VpO-ZA-pdf" secondAttribute="top" id="zSg-wU-rCm"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Folder" image="folder" id="GH0-Nw-TuC"/>
                     <connections>
+                        <outlet property="directory" destination="maU-Qu-cqq" id="hSF-ff-SOe"/>
                         <outlet property="folder" destination="ZHq-i4-yqz" id="fhg-hM-fgJ"/>
                     </connections>
                 </viewController>

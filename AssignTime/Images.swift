@@ -12,6 +12,8 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
     
+    // create defaults
+    let defaults = UserDefaults.standard
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -42,7 +44,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let imagePAth = (self.getDirectoryPath() as NSString)
         if fileManager.fileExists(atPath: imagePAth as String){
 //            let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String).first?.appending("customDir")
-            let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+            let path = defaults.string(forKey: "path")!
             let dirContents = try? fileManager.contentsOfDirectory(atPath: path as String)
             let count = dirContents?.count
             return count!
@@ -77,7 +79,8 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Delete the cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            deleteDirectory()
+//            deleteDirectory()
+            print (indexPath.row)
             self.table.reloadData()
         }
     }
@@ -97,7 +100,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Get Directory Path
     
     func getDirectoryPath() -> String {
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        let paths = defaults.string(forKey: "path")!
 
 //        let documentsDirectory = paths[0]
         return paths
@@ -122,7 +125,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     func deleteDirectory(){
         let fileManager = FileManager.default
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir1")
         if fileManager.fileExists(atPath: paths){
             try! fileManager.removeItem(atPath: paths)
             print ("deleted")

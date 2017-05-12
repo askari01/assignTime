@@ -46,7 +46,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         
         // Directory Creation & Check for Image storage
         let fm = FileManager.default
-        let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        
+        var path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        
+        if defaults.string(forKey: "name") != nil {
+            path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(defaults.string(forKey: "name")!)
+        }
         
         if !fm.fileExists(atPath: path) {
             try! fm.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
@@ -260,10 +265,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     
     func saveImageDocumentDirectory(image: UIImage){
         let fileManager = FileManager.default
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir/\(Date.init()).jpg")
+        let paths = (defaults.string(forKey: "path")!).appending("/\(Date.init()).jpg")
+//            (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir1/\(Date.init()).jpg")
 //        let image = UIImage(named: "apple.jpg")
         let imageData = UIImageJPEGRepresentation(image, 0.5)
-        fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
+        fileManager.createFile(atPath: paths, contents: imageData, attributes: nil)
     }
     
     func getDirectoryPath() -> String {
