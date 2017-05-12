@@ -69,7 +69,9 @@ class Folder: UIViewController {
         }else{
             print("Something went wrong.")
         }
+        folder.text = "customDir"
         defaults.set("customDir", forKey: "path")
+        defaults.set("customDir", forKey: "name")
     }
     
     // Calls this function when the tap is recognized.

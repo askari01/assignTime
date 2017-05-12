@@ -66,6 +66,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
         checkSwitchOnStart()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Directory Creation & Check for Image storage
+        let fm = FileManager.default
+        
+        var path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir")
+        
+        if defaults.string(forKey: "name") != nil {
+            path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(defaults.string(forKey: "name")!)
+        }
+        
+        if !fm.fileExists(atPath: path) {
+            try! fm.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            defaults.set(path, forKey: "path")
+        } else {
+            defaults.set(path, forKey: "path")
+            print ("Already created directory")
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

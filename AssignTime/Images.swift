@@ -36,7 +36,9 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         refreshControl.endRefreshing()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        refresh(sender: self)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Get Count
