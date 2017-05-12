@@ -57,6 +57,7 @@ class Folder: UIViewController {
         defaults.set(directory.text!, forKey: "name")
         folder.text = defaults.string(forKey: "path")
         directory.text = ""
+        dismissKeyboard()
     }
 
     @IBAction func deleteFolder(_ sender: Any) {
@@ -72,6 +73,7 @@ class Folder: UIViewController {
         folder.text = "customDir"
         defaults.set("customDir", forKey: "path")
         defaults.set("customDir", forKey: "name")
+        dismissKeyboard()
     }
     
     // Calls this function when the tap is recognized.
