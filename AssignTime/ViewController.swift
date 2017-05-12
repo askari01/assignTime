@@ -17,7 +17,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
     @IBOutlet weak var notifSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
     
-    
+    // create defaults
+    let defaults = UserDefaults.standard
     let picker = UIImagePickerController()
     var pickerData: [String] = [String]()
     
@@ -54,6 +55,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
 //            try! fm.removeItem(atPath: path)
         }
         
+        // check state 
+        checkSwitchOnStart()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,11 +71,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePick
             print("UISwitch is ON")
             timePicker.isHidden = false
             timePicked.text = "1:00"
+            defaults.set(true, forKey: "switch")
         } else {
             print("UISwitch is OFF")
-            
+            defaults.set(false, forKey: "switch")
             // Clear Previous Notifications
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            timePicked.text = "0:00"
+            timePicker.isHidden = true
+        }
+    }
+    
+    // Check Switches
+    func checkSwitchOnStart() {
+        if defaults.bool(forKey: "switch") == true {
+            notifSwitch.setOn(true, animated: true)
+            timePicker.isHidden = false
+            timePicked.text = "1:00"
+        } else {
+            notifSwitch.setOn(false, animated: true)
             timePicked.text = "0:00"
             timePicker.isHidden = true
         }
