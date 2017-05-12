@@ -11,7 +11,7 @@ import UIKit
 
 class Folder: UIViewController {
 
-    @IBOutlet weak var folder: UILabel!
+    @IBOutlet weak var folder: UITextView!
     
     // create defaults
     let defaults = UserDefaults.standard

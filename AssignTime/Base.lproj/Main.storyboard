@@ -165,7 +165,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assigntime" translatesAutoresizingMaskIntoConstraints="NO" id="Yb7-BD-Lnj">
-                                                    <rect key="frame" x="0.0" y="8" width="376" height="245"/>
+                                                    <rect key="frame" x="0.0" y="8" width="320" height="245"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -211,42 +211,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h73-Jj-Isp">
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h73-Jj-Isp">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <tabBarItem title="Folder" image="folder" id="a3I-P3-prL"/>
                                 </items>
                             </tabBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVz-TM-LvO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVz-TM-LvO">
                                 <rect key="frame" x="16" y="28" width="182" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="182" id="bga-H6-y0a"/>
+                                    <constraint firstAttribute="height" constant="51" id="nlE-7P-3RH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pictures Folder:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-Mp-H2m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pictures Folder:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-Mp-H2m">
                                 <rect key="frame" x="16" y="87" width="182" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsx-uX-cB4">
-                                <rect key="frame" x="16" y="116" width="343" height="102"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">this is some dumy text this is some dumy text this is some dumy text this is some dumy text this is some dumy text this is some dumy text this is some dumy text this is some dumy text</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHq-i4-yqz">
+                                <rect key="frame" x="16" y="116" width="343" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZHq-i4-yqz" firstAttribute="centerX" secondItem="h73-Jj-Isp" secondAttribute="centerX" id="3AL-sn-1S4"/>
+                            <constraint firstItem="vAW-Mp-H2m" firstAttribute="top" secondItem="oVz-TM-LvO" secondAttribute="bottom" constant="8" symbolic="YES" id="Bfs-Qe-Ow0"/>
+                            <constraint firstItem="h73-Jj-Isp" firstAttribute="leading" secondItem="ddD-yL-Lyk" secondAttribute="leading" id="HSl-hl-iCJ"/>
+                            <constraint firstItem="oVz-TM-LvO" firstAttribute="top" secondItem="Dgv-th-Tlj" secondAttribute="bottom" constant="8" symbolic="YES" id="HcD-qa-lJO"/>
+                            <constraint firstItem="oVz-TM-LvO" firstAttribute="leading" secondItem="vAW-Mp-H2m" secondAttribute="leading" id="J5V-NT-Lar"/>
+                            <constraint firstItem="VpO-ZA-pdf" firstAttribute="top" secondItem="ZHq-i4-yqz" secondAttribute="bottom" constant="302" id="Svt-kK-TwB"/>
+                            <constraint firstItem="ZHq-i4-yqz" firstAttribute="trailing" secondItem="ddD-yL-Lyk" secondAttribute="trailingMargin" id="UTf-Pv-AaZ"/>
+                            <constraint firstItem="ZHq-i4-yqz" firstAttribute="top" secondItem="vAW-Mp-H2m" secondAttribute="bottom" constant="8" symbolic="YES" id="WSP-rv-YPQ"/>
+                            <constraint firstItem="oVz-TM-LvO" firstAttribute="trailing" secondItem="vAW-Mp-H2m" secondAttribute="trailing" id="Xfc-JM-Pe9"/>
+                            <constraint firstItem="vAW-Mp-H2m" firstAttribute="leading" secondItem="ZHq-i4-yqz" secondAttribute="leading" id="a0E-Uk-2V3"/>
+                            <constraint firstItem="ZHq-i4-yqz" firstAttribute="leading" secondItem="ddD-yL-Lyk" secondAttribute="leadingMargin" id="ojV-Gk-vrF"/>
+                            <constraint firstItem="h73-Jj-Isp" firstAttribute="top" secondItem="VpO-ZA-pdf" secondAttribute="top" id="zSg-wU-rCm"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Folder" image="folder" id="GH0-Nw-TuC"/>
                     <connections>
-                        <outlet property="folder" destination="Qsx-uX-cB4" id="OzO-Ox-cXW"/>
+                        <outlet property="folder" destination="ZHq-i4-yqz" id="fhg-hM-fgJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9N-Qh-qIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
