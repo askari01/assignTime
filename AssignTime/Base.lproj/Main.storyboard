@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p89-jN-pLG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p89-jN-pLG">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -165,7 +165,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assigntime" translatesAutoresizingMaskIntoConstraints="NO" id="Yb7-BD-Lnj">
-                                                    <rect key="frame" x="0.0" y="8" width="375" height="245"/>
+                                                    <rect key="frame" x="0.0" y="8" width="320" height="245"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -199,7 +199,7 @@
             </objects>
             <point key="canvasLocation" x="72.799999999999997" y="530.28485757121439"/>
         </scene>
-        <!--Folder-->
+        <!--Settings-->
         <scene sceneID="Kjf-BW-ov5">
             <objects>
                 <viewController id="zqG-Qd-OaH" customClass="Folder" customModule="AssignTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -306,7 +306,7 @@
                             <constraint firstItem="h73-Jj-Isp" firstAttribute="top" secondItem="VpO-ZA-pdf" secondAttribute="top" id="zSg-wU-rCm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Folder" image="folder" id="GH0-Nw-TuC"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="GH0-Nw-TuC"/>
                     <connections>
                         <outlet property="directory" destination="maU-Qu-cqq" id="hSF-ff-SOe"/>
                         <outlet property="folder" destination="ZHq-i4-yqz" id="fhg-hM-fgJ"/>
@@ -322,5 +322,6 @@
         <image name="albums" width="21" height="21"/>
         <image name="assigntime" width="1000" height="1000"/>
         <image name="folder" width="16" height="16"/>
+        <image name="settings" width="16" height="16"/>
     </resources>
 </document>
