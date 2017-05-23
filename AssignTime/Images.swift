@@ -11,6 +11,8 @@ import UIKit
 class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var emptyLogo: UIImageView!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     // create defaults
     let defaults = UserDefaults.standard
@@ -49,6 +51,7 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let path = defaults.string(forKey: "path")!
             let dirContents = try? fileManager.contentsOfDirectory(atPath: path as String)
             let count = dirContents?.count
+            emptyCheck(count: count!)
             return count!
             
         }else{
@@ -152,6 +155,23 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // show table & hide
+    func emptyCheck(count: Int) {
+        if count > 0 {
+            // show table
+            // show empty view
+            emptyLogo.isHidden = true
+            emptyLabel.isHidden = true
+            table.isHidden = false
+        } else {
+            // show empty view
+            emptyLogo.isHidden = false
+            emptyLabel.isHidden = false
+            table.isHidden = true
+        }
+
     }
     
     /*

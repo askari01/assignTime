@@ -43,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Je-y7-zq1">
-                                <rect key="frame" x="16" y="55.5" width="288" height="111"/>
+                                <rect key="frame" x="16" y="56" width="288" height="111"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="Mgz-k9-IIn"/>
                                 </constraints>
@@ -52,16 +52,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Time Interval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVa-mb-0zt">
-                                <rect key="frame" x="16" y="174.5" width="288" height="19.5"/>
+                                <rect key="frame" x="16" y="175" width="288" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7k-oc-rc1">
-                                <rect key="frame" x="91" y="202" width="137" height="216"/>
+                                <rect key="frame" x="91" y="203" width="137" height="216"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BN-rI-0pa">
-                                <rect key="frame" x="16" y="431" width="202" height="19.5"/>
+                                <rect key="frame" x="16" y="432" width="202" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="202" id="A0O-rs-nMa"/>
                                 </constraints>
@@ -70,20 +70,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Pic Alarm will be executed every" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKX-id-jQG">
-                                <rect key="frame" x="16" y="28" width="288" height="19.5"/>
+                                <rect key="frame" x="16" y="28" width="288" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nRo-jU-e5k">
-                                <rect key="frame" x="255" y="425.5" width="51" height="31"/>
+                                <rect key="frame" x="255" y="427" width="51" height="31"/>
                             </switch>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-ie-j51">
                                 <rect key="frame" x="102" y="255" width="170" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujS-CT-8EZ">
-                                <rect key="frame" x="79" y="458.5" width="160" height="34"/>
+                                <rect key="frame" x="79" y="460" width="160" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Take a Pic Now">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -153,6 +153,16 @@
                                     <tabBarItem systemItem="more" id="EmU-BD-1bI"/>
                                 </items>
                             </tabBar>
+                            <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This folder is empty." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx4-id-V0r">
+                                <rect key="frame" x="40" y="315" width="240" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safebox" translatesAutoresizingMaskIntoConstraints="NO" id="32P-zD-9fc">
+                                <rect key="frame" x="110" y="183" width="100" height="100"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sM2-h0-e74">
                                 <rect key="frame" x="0.0" y="28" width="320" height="491"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -170,8 +180,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Yb7-BD-Lnj" firstAttribute="centerX" secondItem="RK0-yk-jwI" secondAttribute="centerX" id="6Cp-AU-0J8"/>
+                                                <constraint firstItem="Yb7-BD-Lnj" firstAttribute="leading" secondItem="RK0-yk-jwI" secondAttribute="leading" id="Jss-xG-qjp"/>
+                                                <constraint firstItem="Yb7-BD-Lnj" firstAttribute="top" secondItem="RK0-yk-jwI" secondAttribute="topMargin" id="RnJ-vE-bgg"/>
                                                 <constraint firstItem="Yb7-BD-Lnj" firstAttribute="top" secondItem="RK0-yk-jwI" secondAttribute="topMargin" id="UTO-aH-cwY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yb7-BD-Lnj" secondAttribute="trailing" id="X2q-HV-Qjz"/>
                                                 <constraint firstItem="Yb7-BD-Lnj" firstAttribute="leading" secondItem="RK0-yk-jwI" secondAttribute="leading" id="Zf7-ZG-cbL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Yb7-BD-Lnj" secondAttribute="bottom" constant="-8.5" id="Zxc-ai-m2u"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Yb7-BD-Lnj" secondAttribute="bottom" constant="-9" id="n4F-TL-MpP"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -184,20 +198,31 @@
                             <constraint firstItem="bZf-Zv-aO4" firstAttribute="top" secondItem="M8J-Gk-dc1" secondAttribute="top" id="1fs-PQ-HtO"/>
                             <constraint firstItem="sM2-h0-e74" firstAttribute="leading" secondItem="OmP-Ns-Pgf" secondAttribute="leading" id="9xl-i7-4Kb"/>
                             <constraint firstItem="bZf-Zv-aO4" firstAttribute="top" secondItem="sM2-h0-e74" secondAttribute="bottom" id="A2O-ts-YZS"/>
+                            <constraint firstItem="tx4-id-V0r" firstAttribute="top" secondItem="32P-zD-9fc" secondAttribute="bottom" constant="32" id="Do9-Ci-suI"/>
+                            <constraint firstItem="bZf-Zv-aO4" firstAttribute="leading" secondItem="OmP-Ns-Pgf" secondAttribute="leading" id="KCz-qA-I8K"/>
                             <constraint firstItem="sM2-h0-e74" firstAttribute="trailing" secondItem="bZf-Zv-aO4" secondAttribute="trailing" id="Kah-YT-AaM"/>
+                            <constraint firstItem="tx4-id-V0r" firstAttribute="centerX" secondItem="bZf-Zv-aO4" secondAttribute="centerX" id="RNY-hA-qzg"/>
+                            <constraint firstItem="tx4-id-V0r" firstAttribute="leading" secondItem="OmP-Ns-Pgf" secondAttribute="leadingMargin" constant="24" id="Ray-aa-Roh"/>
                             <constraint firstItem="sM2-h0-e74" firstAttribute="top" secondItem="k8S-RY-e7d" secondAttribute="bottom" constant="8" symbolic="YES" id="UQX-0v-Npy"/>
+                            <constraint firstItem="32P-zD-9fc" firstAttribute="centerX" secondItem="tx4-id-V0r" secondAttribute="centerX" id="VF5-UB-CfS"/>
+                            <constraint firstAttribute="trailing" secondItem="bZf-Zv-aO4" secondAttribute="trailing" id="ZmV-p6-GSD"/>
                             <constraint firstAttribute="trailing" secondItem="sM2-h0-e74" secondAttribute="trailing" id="axl-Jh-Kwu"/>
+                            <constraint firstItem="32P-zD-9fc" firstAttribute="leading" secondItem="OmP-Ns-Pgf" secondAttribute="leadingMargin" constant="94" id="lKz-PW-kaY"/>
+                            <constraint firstItem="32P-zD-9fc" firstAttribute="centerY" secondItem="OmP-Ns-Pgf" secondAttribute="centerY" constant="-51" id="rZE-bI-k4C"/>
                             <constraint firstItem="sM2-h0-e74" firstAttribute="leading" secondItem="bZf-Zv-aO4" secondAttribute="leading" id="rgT-SJ-pOr"/>
+                            <constraint firstItem="32P-zD-9fc" firstAttribute="top" secondItem="k8S-RY-e7d" secondAttribute="bottom" constant="163" id="vzM-0U-7M5"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Images" image="albums" id="iNj-Zg-FU7"/>
                     <connections>
+                        <outlet property="emptyLabel" destination="tx4-id-V0r" id="lxO-fB-V8r"/>
+                        <outlet property="emptyLogo" destination="32P-zD-9fc" id="kFE-Ym-86b"/>
                         <outlet property="table" destination="sM2-h0-e74" id="eOD-zh-v1M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNe-BJ-Q0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="72.799999999999997" y="530.28485757121439"/>
+            <point key="canvasLocation" x="71.25" y="530.28169014084506"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Kjf-BW-ov5">
@@ -242,7 +267,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llo-JD-1sr">
-                                <rect key="frame" x="16" y="219.5" width="154.5" height="26.5"/>
+                                <rect key="frame" x="16" y="219" width="155" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -321,7 +346,8 @@
         <image name="alarm-clock" width="21" height="21"/>
         <image name="albums" width="21" height="21"/>
         <image name="assigntime" width="1000" height="1000"/>
-        <image name="folder" width="16" height="16"/>
-        <image name="settings" width="16" height="16"/>
+        <image name="folder" width="21" height="21"/>
+        <image name="safebox" width="256" height="256"/>
+        <image name="settings" width="21" height="21"/>
     </resources>
 </document>
