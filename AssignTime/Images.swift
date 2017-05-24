@@ -18,6 +18,9 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let defaults = UserDefaults.standard
     var refreshControl: UIRefreshControl!
     
+    // path to pics
+    var pics = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +54,10 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let path = defaults.string(forKey: "path")!
             let dirContents = try? fileManager.contentsOfDirectory(atPath: path as String)
             let count = dirContents?.count
+            
+            // check for empty folder
             emptyCheck(count: count!)
+            
             return count!
             
         }else{
@@ -84,7 +90,8 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Delete the cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-//            deleteDirectory()
+            // calling delete
+            deleteFile(index: indexPath.row)
             print (indexPath.row)
             self.table.reloadData()
         }
@@ -120,6 +127,8 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let dirContents = try? fileManager.contentsOfDirectory(atPath: imagePAth as String)
             let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent((dirContents?[index])!)
             if fileManager.fileExists(atPath: imagePAth){
+                print("index\(index): ",imagePAth)
+                pics.insert(imagePAth, at: index)
                 return UIImage(contentsOfFile: imagePAth)!
             }else{
                 print("No Image")
@@ -128,14 +137,21 @@ class Images: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return UIImage(named: "assigntime")!
     }
 
-    func deleteDirectory(){
+    // delete file
+    func deleteFile(index: Int){
+        print("index\(index): ",pics[index])
         let fileManager = FileManager.default
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDir1")
-        if fileManager.fileExists(atPath: paths){
-            try! fileManager.removeItem(atPath: paths)
-            print ("deleted")
-        }else{
-            print("Something went wrong.")
+        
+        let imagePAth = (self.getDirectoryPath() as NSString)
+        if fileManager.fileExists(atPath: imagePAth as String){
+            let imagePAth = pics[index]
+            if fileManager.fileExists(atPath: imagePAth){
+                try! fileManager.removeItem(atPath: imagePAth)
+                print ("deleted")
+                refresh(sender: self)
+            }else{
+                print("Something went wrong.")
+            }
         }
     }
     
